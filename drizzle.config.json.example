@@ -1,0 +1,10 @@
+{
+  "dialect": "sqlite",
+  "out": "./src/db/migrations",
+  "schema": "./src/db/schema/*",
+  "driver": "turso",
+  "dbCredentials": {
+    "url": "",
+    "authToken": ""
+  }
+}
