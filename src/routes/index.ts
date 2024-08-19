@@ -5,12 +5,13 @@ import Elysia, { t } from 'elysia';
 import { monthRU } from '@/utils';
 import cors from '@elysiajs/cors';
 import swagger from '@elysiajs/swagger';
+import { env } from '@/env';
 
 const monthMap = new Map<string, User[]>();
 
 new Elysia()
     .use(swagger())
-    .use(cors({ origin: 'localhost:5173' }))
+    .use(cors({ origin: env.FRONT_URL }))
     .get(
         '/user/:id',
         async ({ params: { id }, error }) => {
@@ -150,4 +151,6 @@ new Elysia()
             params: t.Object({ month: t.Number() }),
         },
     )
-    .listen(42069);
+    .listen(env.SERVER_PORT);
+
+console.log('Listening on port:', env.SERVER_PORT);
